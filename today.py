@@ -1,7 +1,7 @@
 """Render the neofetch-style profile card (dark_mode.svg / light_mode.svg).
 
 Static fields live in PROFILE below; GitHub stats are fetched live with the
-token in GH_TOKEN. Run by .github/workflows/build.yaml once a day.
+token in GH_TOKEN. Run by .github/workflows/build.yaml every hour.
 """
 import calendar
 import datetime as dt
@@ -193,7 +193,7 @@ def build_rows(stats):
 
 def svg(theme, art, rows):
     c = THEMES[theme]
-    lh, top, pad, ch = 20, 30, 20, 9.6  # ch: glyph width of 16px Courier / size-adjusted Consolas
+    lh, top, pad, ch = 20, 30, 30, 9.6  # ch: glyph width of 16px Courier / size-adjusted Consolas
     art_x = pad
     text_x = round(art_x + max(map(len, art)) * ch + 30)
     width = round(text_x + (WIDTH + 1) * ch + pad)
