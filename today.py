@@ -193,11 +193,14 @@ def build_rows(stats):
 
 def svg(theme, art, rows):
     c = THEMES[theme]
-    lh, top = 20, 30
+    lh, top, pad, ch = 20, 30, 20, 9.6  # ch: glyph width of 16px Courier / size-adjusted Consolas
+    art_x = pad
+    text_x = round(art_x + max(map(len, art)) * ch + 30)
+    width = round(text_x + (WIDTH + 1) * ch + pad)
     height = top + max(len(art), len(rows)) * lh + 10
     out = [
         f'<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,\'Courier New\',monospace" '
-        f'width="985px" height="{height}px" font-size="16px">',
+        f'width="{width}px" height="{height}px" font-size="16px">',
         "<style>",
         "@font-face{src:local('Consolas'),local('Consolas Bold');font-family:'ConsolasFallback';"
         "font-display:swap;-webkit-size-adjust:109%;size-adjust:109%;}",
@@ -205,18 +208,18 @@ def svg(theme, art, rows):
         f".del{{fill:{c['dele']};}} .cc{{fill:{c['cc']};}}",
         "text,tspan{white-space:pre;}",
         "</style>",
-        f'<rect width="985px" height="{height}px" fill="{c["bg"]}" rx="15"/>',
-        f'<text x="15" y="{top}" fill="{c["text"]}" class="ascii">',
+        f'<rect width="{width}px" height="{height}px" fill="{c["bg"]}" rx="15"/>',
+        f'<text x="{art_x}" y="{top}" fill="{c["text"]}" class="ascii">',
     ]
     for i, line in enumerate(art):
-        out.append(f'<tspan x="15" y="{top + i * lh}">{escape(line)}</tspan>')
+        out.append(f'<tspan x="{art_x}" y="{top + i * lh}">{escape(line)}</tspan>')
     out.append("</text>")
-    out.append(f'<text x="390" y="{top}" fill="{c["text"]}">')
+    out.append(f'<text x="{text_x}" y="{top}" fill="{c["text"]}">')
     for i, row in enumerate(rows):
         segs = "".join(
             f'<tspan class="{cls}">{escape(t)}</tspan>' if cls else escape(t) for t, cls in row
         )
-        out.append(f'<tspan x="390" y="{top + i * lh}">{segs}</tspan>')
+        out.append(f'<tspan x="{text_x}" y="{top + i * lh}">{segs}</tspan>')
     out.append("</text>")
     out.append("</svg>")
     return "\n".join(out) + "\n"
