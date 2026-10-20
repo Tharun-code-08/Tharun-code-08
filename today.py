@@ -1,7 +1,7 @@
 """Render the neofetch-style profile card (dark_mode.svg / light_mode.svg).
 
 Static fields live in PROFILE below; GitHub stats are fetched live with the
-token in GH_TOKEN. Run by .github/workflows/build.yaml every hour.
+token in GH_TOKEN. Run by .github/workflows/build.yaml every day.
 """
 import calendar
 import datetime as dt
@@ -30,8 +30,8 @@ PROFILE = [
     ("kv", "Languages.Computer", "HTML, CSS, SQL, JSON, YAML"),
     ("kv", "Languages.Real", "English, Tamil"),
     ("blank",),
-    ("kv", "Stack.Frontend", "React, Next.js, Astro"),
-    ("kv", "Stack.Backend", "Node.js, NestJS, PostgreSQL, Redis"),
+    ("kv", "Stack.Frontend", "React, Next.js, Three.js, Astro"),
+    ("kv", "Stack.Backend", "Node.js, NestJS, PostgreSQL, Prisma, Redis"),
     ("kv", "Focus", "SaaS products, Dev tools, AI integrations"),
     ("kv", "Motto", "Code first, ask questions later"),
     ("gap",),
