@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,'Courier New',monospace" width="1098px" height="540px" font-size="16px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,'Courier New',monospace" width="1098px" height="660px" font-size="16px">
 <style>
 @font-face{src:local('Consolas'),local('Consolas Bold');font-family:'ConsolasFallback';font-display:swap;-webkit-size-adjust:109%;size-adjust:109%;}
 .key{fill:#ffa657;} .value{fill:#a5d6ff;} .add{fill:#3fb950;} .del{fill:#f85149;} .cc{fill:#616e7f;}
 text,tspan{white-space:pre;}
 </style>
-<rect width="1098px" height="540px" fill="#161b22" rx="15"/>
+<rect width="1098px" height="660px" fill="#161b22" rx="15"/>
 <text x="30" y="30" fill="#c9d1d9" class="ascii">
 <tspan x="30" y="30">             `~il+xawbbbqpjl,</tspan>
 <tspan x="30" y="50">         `!*pmHWWHHWMWMM&amp;&amp;&amp;Wgdw*&#x27;</tspan>
@@ -56,7 +56,13 @@ text,tspan{white-space:pre;}
 <tspan x="444" y="430"></tspan>
 <tspan x="444" y="450">- GitHub Stats ——————————————————————————————————————————————-—-</tspan>
 <tspan x="444" y="470"><tspan class="cc">. </tspan><tspan class="key">Repos</tspan>: <tspan class="cc">.......</tspan> <tspan class="value">16 {Contributed: 0}</tspan> | <tspan class="key">Stars</tspan>: <tspan class="cc">................</tspan> <tspan class="value">7</tspan></tspan>
-<tspan x="444" y="490"><tspan class="cc">. </tspan><tspan class="key">Commits</tspan>: <tspan class="cc">.....................</tspan> <tspan class="value">775</tspan> | <tspan class="key">Followers</tspan>: <tspan class="cc">...........</tspan> <tspan class="value">21</tspan></tspan>
-<tspan x="444" y="510"><tspan class="cc">. </tspan><tspan class="key">Lines of Code on GitHub</tspan>: <tspan class="cc">.</tspan> <tspan class="value">660,252</tspan> ( <tspan class="add">7,808,981++</tspan>, <tspan class="del">7,148,729--</tspan> )</tspan>
+<tspan x="444" y="490"><tspan class="cc">. </tspan><tspan class="key">Commits</tspan>: <tspan class="cc">.....................</tspan> <tspan class="value">776</tspan> | <tspan class="key">Followers</tspan>: <tspan class="cc">...........</tspan> <tspan class="value">22</tspan></tspan>
+<tspan x="444" y="510"><tspan class="cc">. </tspan><tspan class="key">Lines of Code on GitHub</tspan>: <tspan class="cc">.</tspan> <tspan class="value">659,755</tspan> ( <tspan class="add">7,808,220++</tspan>, <tspan class="del">7,148,465--</tspan> )</tspan>
+<tspan x="444" y="530"></tspan>
+<tspan x="444" y="550">- LeetCode Stats ————————————————————————————————————————————-—-</tspan>
+<tspan x="444" y="570"><tspan class="cc">. </tspan><tspan class="key">Solved</tspan>: <tspan class="cc">.................................</tspan> <tspan class="value">14 · Rank #5,000,001</tspan></tspan>
+<tspan x="444" y="590"><tspan class="cc">. </tspan><tspan class="key">Easy</tspan>: <tspan class="cc">......................................................</tspan> <tspan class="value">4</tspan></tspan>
+<tspan x="444" y="610"><tspan class="cc">. </tspan><tspan class="key">Medium</tspan>: <tspan class="cc">....................................................</tspan> <tspan class="value">8</tspan></tspan>
+<tspan x="444" y="630"><tspan class="cc">. </tspan><tspan class="key">Hard</tspan>: <tspan class="cc">......................................................</tspan> <tspan class="value">2</tspan></tspan>
 </text>
 </svg>
