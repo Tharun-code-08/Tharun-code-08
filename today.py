@@ -13,6 +13,7 @@ from html import escape
 from pathlib import Path
 
 USER = "Tharun-code-08"
+LEETCODE_USER = "Tharun-code-08"
 UPTIME_SINCE = dt.date(2025, 6, 5)  # GitHub join date; swap for a birthday to show age
 WIDTH = 64  # characters in the right-hand column
 ROOT = Path(__file__).parent
@@ -44,6 +45,9 @@ PROFILE = [
     ("repos",),
     ("commits",),
     ("loc",),
+    ("gap",),
+    ("section", "LeetCode Stats"),
+    ("leetcode",),
 ]
 
 THEMES = {
@@ -127,6 +131,41 @@ def fetch_stats():
     }
 
 
+def fetch_leetcode_stats():
+    """Fetch accepted-problem counts from LeetCode's public GraphQL API."""
+    query = """
+      query userProfile($username: String!) {
+        matchedUser(username: $username) {
+          profile { ranking }
+          submitStatsGlobal {
+            acSubmissionNum { difficulty count }
+          }
+        }
+      }
+    """
+    payload = json.dumps({"query": query, "variables": {"username": LEETCODE_USER}}).encode()
+    request = urllib.request.Request(
+        "https://leetcode.com/graphql/",
+        data=payload,
+        headers={"Content-Type": "application/json", "User-Agent": USER},
+    )
+    with urllib.request.urlopen(request, timeout=15) as response:
+        result = json.loads(response.read())
+
+    user = result.get("data", {}).get("matchedUser")
+    if not user:
+        raise RuntimeError(f"LeetCode profile not found: {LEETCODE_USER}")
+
+    counts = {item["difficulty"]: item["count"] for item in user["submitStatsGlobal"]["acSubmissionNum"]}
+    return {
+        "all": counts.get("All", 0),
+        "easy": counts.get("Easy", 0),
+        "medium": counts.get("Medium", 0),
+        "hard": counts.get("Hard", 0),
+        "ranking": user["profile"].get("ranking"),
+    }
+
+
 def uptime(since, today):
     total = (today.year - since.year) * 12 + today.month - since.month - (today.day < since.day)
     years, months = divmod(total, 12)
@@ -158,7 +197,7 @@ def rule(label, width, lead):
     return [(text, None), ("—" * (width - len(text) - 3), None), ("-—-", None)]
 
 
-def build_rows(stats):
+def build_rows(stats, leetcode):
     n = lambda v: f"{v:,}"
     rows = []
     for row in PROFILE:
@@ -188,6 +227,12 @@ def build_rows(stats):
             row_ = kv("Lines of Code on GitHub", f"{net} ( {add}++, {dele}-- )", WIDTH)[:-1]
             rows.append(row_ + [(net, "value"), (" ( ", None), (f"{add}++", "add"),
                                 (", ", None), (f"{dele}--", "del"), (" )", None)])
+        elif kind == "leetcode":
+            rank = f" · Rank #{n(leetcode['ranking'])}" if leetcode["ranking"] else ""
+            rows.append(kv("Solved", f"{n(leetcode['all'])}{rank}", WIDTH))
+            rows.append(kv("Easy", n(leetcode["easy"]), WIDTH))
+            rows.append(kv("Medium", n(leetcode["medium"]), WIDTH))
+            rows.append(kv("Hard", n(leetcode["hard"]), WIDTH))
     return rows
 
 
@@ -227,7 +272,7 @@ def svg(theme, art, rows):
 
 def main():
     art = (ROOT / "ascii-art.txt").read_text(encoding="utf-8").splitlines()
-    rows = build_rows(fetch_stats())
+    rows = build_rows(fetch_stats(), fetch_leetcode_stats())
     for theme in THEMES:
         (ROOT / f"{theme}_mode.svg").write_text(svg(theme, art, rows), encoding="utf-8")
 
