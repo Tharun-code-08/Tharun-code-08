@@ -2,8 +2,8 @@
 
 <a href="https://github.com/Tharun-code-08">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg">
-    <img alt="Tharun Adhithya's profile: current work and live GitHub and LeetCode activity" src="light_mode.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg?raw=true">
+    <img alt="Tharun Adhithya's profile: current work and live GitHub and LeetCode activity" src="light_mode.svg?raw=true">
   </picture>
 </a>
 
