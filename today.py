@@ -156,45 +156,49 @@ def svg(theme, github, leetcode):
     ]
 
     out = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="840" height="440" viewBox="0 0 840 440" role="img" aria-labelledby="title desc">',
         '<title id="title">Tharun Adhithya — full-stack developer</title>',
         '<desc id="desc">A profile card showing current projects and live GitHub and LeetCode activity.</desc>',
         "<style>",
-        f".bg{{fill:{color['background']};}} .surface{{fill:{color['surface']};}} .rule{{stroke:{color['rule']};}}",
-        f".title{{fill:{color['text']};font:700 31px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-.7px;}}",
-        f".subtitle{{fill:{color['muted']};font:400 16px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}}",
-        f".section{{fill:{color['muted']};font:600 13px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.2px;}}",
-        f".project{{fill:{color['text']};font:600 15px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}}",
-        f".detail{{fill:{color['muted']};font:400 14px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}}",
-        f".metric{{fill:{color['text']};font:600 16px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}}",
-        f".accent{{fill:{color['accent']};font:700 25px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-.7px;}}",
-        f".mono{{fill:{color['background']};font:700 20px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:-1.5px;}}",
+        f".panel{{fill:{color['surface']};stroke:{color['rule']};stroke-width:1;}} .rule{{stroke:{color['rule']};stroke-width:1;}}",
+        f".title{{fill:{color['text']};font:700 38px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-1px;}}",
+        f".handle{{fill:{color['accent']};font:600 14px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.2px;}}",
+        f".subtitle{{fill:{color['muted']};font:400 17px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}}",
+        f".section{{fill:{color['muted']};font:600 14px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.1px;}}",
+        f".project{{fill:{color['text']};font:650 18px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-.2px;}}",
+        f".detail{{fill:{color['muted']};font:400 15px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}}",
+        f".metric{{fill:{color['text']};font:700 29px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-.5px;}}",
+        f".metric-label{{fill:{color['muted']};font:400 14px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}}",
+        f".accent{{fill:{color['accent']};font:700 34px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-1px;}}",
         "</style>",
-        '<rect class="bg" width="960" height="360"/>',
-        '<rect class="surface" x="24" y="24" width="912" height="312" rx="12"/>',
-        f'<rect x="48" y="52" width="58" height="58" rx="10" fill="{color["accent"]}"/>',
-        text(59, 88, "TA", "mono"),
-        text(128, 76, "Tharun Adhithya", "title"),
-        text(128, 103, "Full-stack developer building practical software for teams and creators.", "subtitle"),
-        '<line class="rule" x1="48" y1="136" x2="912" y2="136"/>',
-        '<line class="rule" x1="570" y1="160" x2="570" y2="302"/>',
-        text(48, 174, "Building now", "section"),
-        text(602, 174, "Live activity", "section"),
+        '<rect class="panel" x=".5" y=".5" width="839" height="439" rx="12"/>',
+        text(48, 50, "@Tharun-code-08 · Chennai, India", "handle"),
+        text(48, 98, "Tharun Adhithya", "title"),
+        text(48, 130, "From retail operations to creator tools and playable interfaces.", "subtitle"),
+        '<line class="rule" x1="48" y1="164" x2="792" y2="164"/>',
+        '<line class="rule" x1="520" y1="194" x2="520" y2="386"/>',
+        text(48, 204, "Current builds", "section"),
+        text(552, 204, "Activity", "section"),
     ]
 
     for index, (project, description) in enumerate(work):
-        y = 211 + index * 31
-        out.append(text(48, y, project, "project"))
-        out.append(text(202, y, f"— {description}", "detail"))
+        y = 245 + index * 54
+        out.append(f'<rect x="48" y="{y - 13}" width="4" height="30" rx="2" fill="{color["accent"]}"/>')
+        out.append(text(68, y, project, "project"))
+        out.append(text(68, y + 23, description, "detail"))
 
     out.extend(
         [
-            text(602, 211, "GitHub", "detail"),
-            text(685, 211, f"{number(github['repositories'])} repos · {number(github['commits'])} commits · {number(github['stars'])} stars", "metric"),
-            text(602, 251, "LeetCode", "detail"),
-            text(685, 251, f"{number(leetcode['total'])} solved", "accent"),
-            text(685, 277, f"{leetcode['easy']} easy · {leetcode['medium']} medium · {leetcode['hard']} hard", "detail"),
-            text(48, 316, "TypeScript · React · Node.js · PostgreSQL · Redis · Docker", "detail"),
+            text(552, 245, number(github["repositories"]), "metric"),
+            text(552, 268, "public repositories", "metric-label"),
+            text(692, 245, number(github["commits"]), "metric"),
+            text(692, 268, "public commits", "metric-label"),
+            text(552, 306, f"{number(github['stars'])} stars on GitHub", "detail"),
+            '<line class="rule" x1="552" y1="326" x2="792" y2="326"/>',
+            text(552, 354, "LeetCode", "section"),
+            text(552, 392, f"{number(leetcode['total'])} solved", "accent"),
+            text(552, 416, f"{leetcode['easy']} easy · {leetcode['medium']} medium · {leetcode['hard']} hard", "detail"),
+            text(48, 412, "TypeScript · React · Node.js · PostgreSQL · Redis · Docker", "detail"),
         ]
     )
     out.append("</svg>")
