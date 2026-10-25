@@ -32,12 +32,12 @@
 <text x="68" y="376" class="detail">interactive portfolio</text>
 <text x="552" y="245" class="metric">16</text>
 <text x="552" y="268" class="metric-label">public repositories</text>
-<text x="692" y="245" class="metric">779</text>
+<text x="692" y="245" class="metric">780</text>
 <text x="692" y="268" class="metric-label">public commits</text>
 <text x="552" y="306" class="detail">7 stars on GitHub</text>
 <line class="rule" x1="552" y1="326" x2="792" y2="326"/>
 <text x="552" y="354" class="section">LeetCode</text>
-<text x="552" y="392" class="accent">14 solved</text>
-<text x="552" y="416" class="detail">4 easy · 8 medium · 2 hard</text>
+<text x="552" y="392" class="accent">16 solved</text>
+<text x="552" y="416" class="detail">5 easy · 9 medium · 2 hard</text>
 <text x="48" y="412" class="detail">TypeScript · React · Node.js · PostgreSQL · Redis · Docker</text>
 </svg>
